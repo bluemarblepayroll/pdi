@@ -8,7 +8,7 @@
 #
 
 require 'acts_as_hashable'
-require 'english'
+require 'English'
 require 'forwardable'
 require 'open3'
 require 'timeout'

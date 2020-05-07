@@ -14,6 +14,21 @@ describe Pdi::Spoon do
   let(:mocks_dir) { %w[spec mocks spoon] }
   let(:dir)       { File.join(*mocks_dir) }
 
+  describe '#initialize' do
+    it 'sets executor' do
+      timeout_in_seconds = 987
+
+      subject = described_class.new(dir: dir, timeout_in_seconds: timeout_in_seconds)
+
+      # Private/internal testing is not recommended, but I really wanted to ensure
+      # this class is properly configuring the Executor instance, that way I can rely
+      # mainly on the Executor unit tests instead of integration tests at this level.
+      executor = subject.send('executor')
+
+      expect(executor.timeout_in_seconds).to eq(timeout_in_seconds)
+    end
+  end
+
   describe '#run' do
     context 'transformations' do
       let(:options) do

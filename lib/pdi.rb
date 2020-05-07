@@ -8,8 +8,10 @@
 #
 
 require 'acts_as_hashable'
+require 'english'
 require 'forwardable'
 require 'open3'
+require 'timeout'
 
 require_relative 'pdi/executor'
 require_relative 'pdi/spoon'

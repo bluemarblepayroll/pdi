@@ -30,7 +30,8 @@ module Pdi
       args: [],
       dir:,
       kitchen: DEFAULT_KITCHEN,
-      pan: DEFAULT_PAN
+      pan: DEFAULT_PAN,
+      timeout_in_seconds: nil
     )
       assert_required(:dir, dir)
       assert_required(:kitchen, kitchen)
@@ -40,7 +41,7 @@ module Pdi
       @dir            = File.expand_path(dir.to_s)
       @kitchen        = kitchen.to_s
       @pan            = pan.to_s
-      @executor       = Executor.new
+      @executor       = Executor.new(timeout_in_seconds: timeout_in_seconds)
       @parser         = Parser.new
 
       freeze
